@@ -21,10 +21,10 @@ const Navbar = memo(function Navbar() {
     { label: 'Experiences', href: '#experiences' },
     { label: 'Dining', href: '#dining' },
     { label: 'About', href: '#about' },
+    // { label: 'FAQ', href: '#faq' },
   ]
 
-  const handleNavClick = (e, href) => {
-    e.preventDefault()
+  const handleNavClick = (href: string) => {
     setMobileMenuOpen(false)
     const element = document.querySelector(href)
     element?.scrollIntoView({ behavior: 'smooth' })
@@ -65,7 +65,10 @@ const Navbar = memo(function Navbar() {
             <motion.a
               key={link.href}
               href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
+              onClick={(e) => {
+                e.preventDefault()
+                handleNavClick(link.href)
+              }}
               className={`text-sm font-medium transition-colors cursor-pointer relative group ${
                 isScrolled
                   ? 'text-foreground/70 hover:text-foreground'
@@ -122,11 +125,11 @@ const Navbar = memo(function Navbar() {
       >
         <div className="px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <motion.a
+            <motion.button
               key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className={`text-sm font-medium py-2 transition-colors relative group ${
+              type="button"
+              onClick={() => handleNavClick(link.href)}
+              className={`text-left text-sm font-medium py-2 transition-colors relative group ${
                 isScrolled
                   ? 'text-foreground/70 hover:text-foreground'
                   : 'text-white/80 hover:text-white'
@@ -137,7 +140,7 @@ const Navbar = memo(function Navbar() {
                 {link.label}
               </span>
               <span className="absolute left-0 -bottom-1 h-[2px] bg-primary w-0 transition-all duration-300 group-hover:w-full" />
-            </motion.a>
+            </motion.button>
           ))}
           {/* Mobile Book Now removed per request */}
         </div>

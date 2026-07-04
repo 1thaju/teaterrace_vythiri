@@ -12,6 +12,7 @@ const About = dynamic(() => import('@/components/About'), { loading: () => <div 
 const Dining = dynamic(() => import('@/components/Dining'), { loading: () => <div className="h-96 bg-background" /> })
 const Testimonials = dynamic(() => import('@/components/Testimonials'), { loading: () => <div className="h-96 bg-background" /> })
 const Certifications = dynamic(() => import('@/components/Certifications'), { loading: () => <div className="h-96 bg-background" /> })
+// const FAQ = dynamic(() => import('@/components/FAQ'), { loading: () => <div className="h-96 bg-background" /> })
 const LocationBooking = dynamic(() => import('@/components/LocationBooking'), { loading: () => <div className="h-96 bg-background" /> })
 const Footer = dynamic(() => import('@/components/Footer'), { loading: () => <div className="h-96 bg-background" /> })
 const WhatsAppButton = dynamic(() => import('@/components/WhatsAppButton'), { ssr: false })
@@ -38,6 +39,7 @@ export default function Home() {
       </div>
       <Testimonials />
       <Certifications />
+      {/* <FAQ /> */}
       <div id="booking">
         <LocationBooking />
       </div>
